@@ -13,4 +13,8 @@ class Van
       end
     end
   end
+
+  def drop_off_broken_bikes(garage)
+    @broken_bikes.each { |bike| garage.bikes << bike }
+  end
 end
