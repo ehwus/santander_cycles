@@ -1,7 +1,7 @@
 require 'van'
 
 describe Van do
-  describe "#pick_up" do
+  describe "#pick_up_broken_bikes" do
     let(:dock) { double :dock }
     let(:bike1) { double :bike }
     let(:bike2) { double :bike }
@@ -11,7 +11,7 @@ describe Van do
       allow(bike2).to receive(:working?).and_return(true)
       allow(dock).to receive(:bikes).and_return([bike1, bike2])
       test_van = Van.new
-      test_van.pick_up(dock)
+      test_van.pick_up_broken_bikes(dock)
 
       expect(test_van.bikes).not_to include(bike2)
       expect(test_van.bikes).to include(bike1)
