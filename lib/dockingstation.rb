@@ -1,4 +1,5 @@
 class DockingStation
+  @@CAPACITY = 20
   attr_accessor :bikes
 
   def initialize
@@ -12,6 +13,7 @@ class DockingStation
   end
 
   def dock(bike)
+    raise "Station is full!" if @bikes.length >= @@CAPACITY
     @bikes << bike
   end
 end

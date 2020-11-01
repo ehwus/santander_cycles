@@ -25,5 +25,11 @@ describe DockingStation do
       station.dock(bike)
       expect(station.bikes).to include(bike) 
     end
+
+    it "throws an error if station is at capacity" do
+      station = DockingStation.new
+      20.times { station.dock(Bike.new) }
+      expect { station.dock(Bike.new) }.to raise_error "Station is full!"
+    end
   end
 end
