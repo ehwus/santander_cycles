@@ -16,5 +16,12 @@ describe Van do
       expect(test_van.bikes).not_to include(bike2)
       expect(test_van.bikes).to include(bike1)
     end
+
+    it "removes the bike object from the docking station" do
+      allow(bike1).to receive(:working?).and_return(false)
+      allow(dock).to receive(:bikes).and_return([bike1])
+      subject.pick_up_broken_bikes(dock)
+      expect(dock.bikes).not_to include(bike1)
+    end
   end
 end
