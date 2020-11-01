@@ -6,9 +6,15 @@ describe DockingStation do
 
   describe "#release_bike" do
     it "releases a working bike" do
-      bike = DockingStation.new.release_bike
+      station = DockingStation.new
+      station.dock(Bike.new)
+      bike = station.release_bike
       expect(bike).to be_a_kind_of(Bike)
       expect(bike.working?).to eq(true)
+    end
+
+    it "raises an error if docking station is empty" do
+      expect { DockingStation.new.release_bike }.to raise_error "There are no bikes"
     end
   end
 

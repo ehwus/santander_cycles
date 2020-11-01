@@ -6,6 +6,8 @@ class DockingStation
   end
 
   def release_bike
+    raise "There are no bikes" if @bikes.empty?
+
     Bike.new
   end
 
