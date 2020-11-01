@@ -10,7 +10,9 @@ class DockingStation
   def release_bike
     raise "There are no bikes" if empty?
 
-    first_working_bike
+    bike_to_release = first_working_bike
+    remove_from_dock(bike_to_release)
+    bike_to_release
   end
 
   def dock(bike)
@@ -32,5 +34,9 @@ class DockingStation
     @bikes.each { |bike| return bike if bike.working? }
 
     raise "No working bikes available"
+  end
+
+  def remove_from_dock(bike)
+    @bikes.delete(bike)
   end
 end

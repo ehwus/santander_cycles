@@ -39,6 +39,14 @@ describe DockingStation do
     it "raises an error if docking station is empty" do
       expect { DockingStation.new.release_bike }.to raise_error "There are no bikes"
     end
+
+    it "removes the released bike from the dock" do
+      station = DockingStation.new
+      bike = Bike.new
+      station.dock(bike)
+      station.release_bike
+      expect(station.bikes).not_to include(bike)
+    end
   end
 
   describe "#dock" do
