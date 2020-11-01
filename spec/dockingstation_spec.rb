@@ -4,6 +4,11 @@ require 'bike'
 describe DockingStation do
   it { is_expected.to respond_to :release_bike }
 
+  it "has a customisable default capacity" do
+    high_capacity = DockingStation.new(30)
+    expect { high_capacity.dock(Bike.new) }.not_to raise_error
+  end
+
   describe "#release_bike" do
     it "releases a working bike" do
       station = DockingStation.new
