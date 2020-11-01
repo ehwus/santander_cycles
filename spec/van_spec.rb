@@ -13,8 +13,8 @@ describe Van do
       test_van = Van.new
       test_van.pick_up_broken_bikes(dock)
 
-      expect(test_van.bikes).not_to include(bike2)
-      expect(test_van.bikes).to include(bike1)
+      expect(test_van.broken_bikes).not_to include(bike2)
+      expect(test_van.broken_bikes).to include(bike1)
     end
 
     it "removes the bike object from the docking station" do

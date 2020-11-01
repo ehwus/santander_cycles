@@ -1,14 +1,14 @@
 class Van
-  attr_reader :bikes
+  attr_reader :broken_bikes
 
   def initialize
-    @bikes = []
+    @broken_bikes = []
   end
 
   def pick_up_broken_bikes(dock)
     dock.bikes.each do |bike|
       unless bike.working?
-        @bikes << bike
+        @broken_bikes << bike
         dock.bikes.delete(bike)
       end
     end
